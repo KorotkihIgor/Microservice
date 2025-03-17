@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.netology.model.Order;
+
+import ru.netology.Order;
 import ru.netology.service.OrderService;
 
 import java.util.Optional;
@@ -12,7 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/orders/")
 public class OrderController {
-    public OrderService orderService;
+    private OrderService orderService;
 
     public OrderController(OrderService orderService) {
         this.orderService = orderService;

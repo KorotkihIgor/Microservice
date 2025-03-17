@@ -1,7 +1,7 @@
 package ru.netology.User_Service.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ru.netology.User_Service.model.User;
+import ru.netology.User;
 import ru.netology.User_Service.service.UserService;
 
 import java.util.Optional;
@@ -19,6 +19,5 @@ public class UserController {
     @GetMapping("/{userId}")
     public Optional<User> getById(@PathVariable int userId) {
         return userService.getById(userId);
-
     }
 }

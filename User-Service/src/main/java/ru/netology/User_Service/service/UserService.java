@@ -1,7 +1,8 @@
 package ru.netology.User_Service.service;
 
 import org.springframework.stereotype.Service;
-import ru.netology.User_Service.model.User;
+
+import ru.netology.User;
 import ru.netology.User_Service.repository.UserReposirory;
 
 import java.util.Optional;

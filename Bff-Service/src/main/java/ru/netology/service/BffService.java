@@ -2,32 +2,32 @@ package ru.netology.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import ru.netology.Order;
+import ru.netology.User;
+import ru.netology.model.UserAndOrder;
 
 import java.util.*;
 
 @Service
 public class BffService {
-    public RestClient restClient;
+    private RestClient restClient;
 
     public BffService() {
         restClient = RestClient.create();
     }
 
-    public List<String> getById(int userId) {
-        List<String> list = new ArrayList<>();
+    public Optional<UserAndOrder> getById(int userId) {
 
-        String user = restClient.get()
+        User user = restClient.get()
                 .uri("http://localhost:8081/api/users/{userId}", userId)
                 .retrieve()
-                .body(String.class);
-        list.add(user);
+                .body(User.class);
 
-        String order = restClient.get()
+        Order order = restClient.get()
                 .uri("http://localhost:8082/api/orders/by-user/{userId}", userId)
                 .retrieve()
-                .body(String.class);
-        list.add(order);
+                .body(Order.class);
 
-        return list;
+        return Optional.of(new UserAndOrder(user, order));
     }
 }
