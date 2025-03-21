@@ -15,6 +15,6 @@ public class OrderService {
     }
 
     public Optional<Order> getById(int userId) {
-        return orderRepository.getById(userId);
+        return Optional.of(orderRepository.getById(userId).orElseThrow());
     }
 }

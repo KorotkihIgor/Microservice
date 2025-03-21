@@ -1,5 +1,7 @@
 package ru.netology.User_Service.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.netology.User;
 import ru.netology.User_Service.service.UserService;
@@ -17,7 +19,12 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public Optional<User> getById(@PathVariable int userId) {
-        return userService.getById(userId);
+    public ResponseEntity<Optional<User>> getById(@PathVariable int userId) {
+        try {
+            Optional<User> user = userService.getById(userId);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+        }
     }
 }

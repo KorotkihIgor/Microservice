@@ -17,6 +17,6 @@ public class UserService {
     }
 
     public Optional<User> getById(int userId) {
-        return userReposirory.getById(userId);
+        return Optional.of(userReposirory.getById(userId).orElseThrow());
     }
 }
