@@ -1,33 +1,38 @@
 package ru.netology.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-
-import java.util.*;
+import ru.netology.Order;
+import ru.netology.User;
+import ru.netology.model.UserAndOrder;
 
 @Service
 public class BffService {
-    public RestClient restClient;
+    private RestClient restClient;
+
+    @Value("${user.service.uri}")
+    private String userServiceUri;
+
+    @Value("${order.service.uri}")
+    private String orderServiceUri;
 
     public BffService() {
         restClient = RestClient.create();
     }
 
-    public List<String> getById(int userId) {
-        List<String> list = new ArrayList<>();
+    public UserAndOrder getById(int userId) {
 
-        String user = restClient.get()
-                .uri("http://localhost:8081/api/users/{userId}", userId)
+        User user = restClient.get()
+                .uri(userServiceUri + "/api/users/{userId}", userId)
                 .retrieve()
-                .body(String.class);
-        list.add(user);
+                .body(User.class);
 
-        String order = restClient.get()
-                .uri("http://localhost:8082/api/orders/by-user/{userId}", userId)
+        Order order = restClient.get()
+                .uri(orderServiceUri + "/api/orders/by-user/{userId}", userId)
                 .retrieve()
-                .body(String.class);
-        list.add(order);
+                .body(Order.class);
 
-        return list;
+        return new UserAndOrder(user, order);
     }
 }

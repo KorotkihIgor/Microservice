@@ -1,7 +1,7 @@
 package ru.netology.service;
 
 import org.springframework.stereotype.Service;
-import ru.netology.model.Order;
+import ru.netology.Order;
 import ru.netology.repository.OrderRepository;
 
 import java.util.Optional;
@@ -15,6 +15,6 @@ public class OrderService {
     }
 
     public Optional<Order> getById(int userId) {
-        return orderRepository.getById(userId);
+        return Optional.of(orderRepository.getById(userId).orElseThrow());
     }
 }

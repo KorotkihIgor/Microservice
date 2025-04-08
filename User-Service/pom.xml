@@ -11,7 +11,7 @@
 	<groupId>ru.netology</groupId>
 	<artifactId>User-Service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>User-Service</name>
+    <name>User-Service</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -20,7 +20,7 @@
 	<developers>
 		<developer/>
 	</developers>
-	<scm>
+    <scm>
 		<connection/>
 		<developerConnection/>
 		<tag/>
@@ -34,7 +34,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>ru.netology</groupId>
+			<artifactId>User-Contract</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

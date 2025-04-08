@@ -1,7 +1,8 @@
 package ru.netology.User_Service.service;
 
 import org.springframework.stereotype.Service;
-import ru.netology.User_Service.model.User;
+
+import ru.netology.User;
 import ru.netology.User_Service.repository.UserReposirory;
 
 import java.util.Optional;
@@ -16,6 +17,6 @@ public class UserService {
     }
 
     public Optional<User> getById(int userId) {
-        return userReposirory.getById(userId);
+        return Optional.of(userReposirory.getById(userId).orElseThrow());
     }
 }

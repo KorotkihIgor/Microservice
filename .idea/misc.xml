@@ -11,6 +11,7 @@
       <set>
         <option value="$PROJECT_DIR$/Bff-service/pom.xml" />
         <option value="$PROJECT_DIR$/Bff-sevice/pom.xml" />
+        <option value="$PROJECT_DIR$/User-Service/User-Contract/pom.xml" />
         <option value="$PROJECT_DIR$/User-Sevice/pom.xml" />
       </set>
     </option>

@@ -1,9 +1,9 @@
-package ru.netology.User_Service.model;
+package ru.netology;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.*;
 
-@Getter
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class User {
     private Integer id;
@@ -11,5 +11,4 @@ public class User {
     private String address;
     private String phoneNumber;
     private String email;
-
 }
